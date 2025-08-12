@@ -1,0 +1,22 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Add this globally or in your main CSS */
+@media (min-width: 901px) {
+  main {
+    margin-left: 260px; /* Matches sidebar width */
+    transition: margin-left 0.3s ease;
+  }
+  /* When sidebar is collapsed */
+  .sidebar.collapsed ~ main {
+    margin-left: 70px;
+  }
+}
+@media (max-width: 900px) {
+  main {
+    margin-left: 0; /* On mobile, no sidebar margin */
+    padding-bottom: 60px; /* Space for bottom nav */
+  }
+}

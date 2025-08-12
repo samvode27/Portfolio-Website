@@ -1,0 +1,103 @@
+.projects {
+  padding: 5rem 2rem 8rem;
+  background: #0f0f1a;
+  color: #fff;
+  text-align: center;
+  scroll-margin-top: 80px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 3rem;
+  background: linear-gradient(90deg, #00f5a0, #00d9f5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Remove .project-grid as Bootstrap grid used */
+
+/* Project card */
+.project-card {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0, 245, 160, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+  height: 100%;
+}
+
+.project-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 245, 160, 0.3);
+  transform: translateY(-5px);
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(90deg, #00f5a0, #00d9f5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.project-description {
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.2rem;
+}
+
+/* Tech tags */
+.tech-list {
+  margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+  display: inline-block;
+  background: #00f5a0;
+  color: #0f0f1a;
+  font-weight: 700;
+  padding: 0.25rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  margin: 0 0.4rem 0.4rem 0;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: #00d9f5;
+  color: #fff;
+}
+
+/* Link button */
+.project-link {
+  font-weight: 700;
+  color: #00f5a0;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 2px solid #00f5a0;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  transition: background 0.3s ease, color 0.3s ease;
+  user-select: none;
+  align-self: flex-start;
+}
+
+.project-link:hover {
+  background: #00f5a0;
+  color: #0f0f1a;
+  text-decoration: none;
+}
+
+/* Responsive handled by Bootstrap grid */

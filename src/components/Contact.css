@@ -1,0 +1,373 @@
+/* Root colors for light & dark */
+:root {
+  --primary: #00f5a0;
+  --primary-dark: #00d9f5;
+  --text-light: #777;
+  --text-dark: #222;
+  --bg-light: #fefefe;
+  --bg-dark: #121212;
+  --card-bg-light: #fff;
+  --card-bg-dark: #1f1f1f;
+  --border-light: #ddd;
+  --border-dark: #333;
+  --error-color: #dc3545;
+  --success-color: #198754;
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-dark: rgba(0, 0, 0, 0.6);
+}
+
+/* Base section styles */
+.contact-section {
+  padding: 5rem 1.5rem 6rem;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-section.dark {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  text-align: center;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  position: relative;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  position: absolute;
+  top: 2.5rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--primary);
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.dark-mode-toggle:hover {
+  color: var(--primary-dark);
+}
+
+/* Grid layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form styles */
+.contact-form {
+  background: var(--card-bg-light);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--shadow-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.contact-section.dark .contact-form {
+  background: var(--card-bg-dark);
+  box-shadow: 0 8px 24px var(--shadow-dark);
+}
+
+/* Floating labels */
+.input-group {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  border: 1.5px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.2rem 1rem 1.2rem 1rem;
+  font-size: 1rem;
+  background: transparent;
+  color: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+  user-select: text;
+}
+
+.contact-section.dark .input-group input,
+.contact-section.dark .input-group textarea {
+  border-color: var(--border-dark);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px var(--primary-dark);
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  font-weight: 600;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.input-group input:not(:placeholder-shown) + label,
+.input-group input:focus + label,
+.input-group textarea:not(:placeholder-shown) + label,
+.input-group textarea:focus + label {
+  top: -10px;
+  left: 10px;
+  font-size: 0.8rem;
+  background: var(--card-bg-light);
+  padding: 0 6px;
+  color: var(--primary);
+  user-select: none;
+}
+
+.contact-section.dark .input-group input:not(:placeholder-shown) + label,
+.contact-section.dark .input-group input:focus + label,
+.contact-section.dark .input-group textarea:not(:placeholder-shown) + label,
+.contact-section.dark .input-group textarea:focus + label {
+  background: var(--card-bg-dark);
+  color: var(--primary);
+}
+
+/* Error messages */
+.error-text {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 4px;
+  user-select: none;
+}
+
+/* Submit button */
+.contact-form button {
+  padding: 0.95rem 2rem;
+  background: var(--primary);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  margin-top: 1rem;
+  align-self: center;
+  width: 60%;
+}
+
+.contact-form button:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Feedback messages */
+.form-feedback {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  user-select: none;
+}
+
+.form-feedback.success {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.form-feedback.error {
+  background: #f8d7da;
+  color: #842029;
+}
+
+/* Contact Info Cards */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  user-select: none;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--card-bg-light);
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 6px 18px var(--shadow-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  color: var(--text-dark);
+  cursor: default;
+  text-decoration: none;
+}
+
+.contact-section.dark .info-card {
+  background: var(--card-bg-dark);
+  box-shadow: 0 6px 18px var(--shadow-dark);
+  color: var(--text-light);
+}
+
+.info-card:hover,
+.info-card:focus {
+  box-shadow: 0 8px 30px var(--primary-dark);
+  outline: none;
+}
+
+.info-card h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+
+.info-icon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Make phone/email cards clickable */
+.info-card[href] {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  user-select: none;
+}
+
+.social-icon {
+  background: var(--card-bg-light);
+  padding: 0.7rem;
+  border-radius: 50%;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.contact-section.dark .social-icon {
+  background: var(--card-bg-dark);
+  color: var(--text-light);
+}
+
+.social-icon:hover,
+.social-icon:focus {
+  background: var(--primary);
+  color: #fff;
+  outline: none;
+}
+
+/* Tooltip */
+.social-icon[title]:hover::after,
+.social-icon[title]:focus::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.social-icon::after {
+  content: "";
+  opacity: 0;
+}
+
+/* Map container */
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px var(--shadow-light);
+  transition: box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.contact-section.dark .map-container {
+  box-shadow: 0 8px 24px var(--shadow-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .contact-section {
+    padding: 3rem 1rem 4rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form button {
+    width: 100%;
+  }
+
+  .dark-mode-toggle {
+    top: 1rem;
+    right: 1rem;
+  }
+}
