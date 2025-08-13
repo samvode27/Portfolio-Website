@@ -12,6 +12,12 @@ const Projects = () => {
       link: "https://github.com/samvode27/FullstackBloodDonation"
     },
     {
+      title: "Fullstack Sacco System",
+      description: "Werqama SACCO (Savings and Credit Cooperative Organization) system, a full-stack web application designed to manage financial cooperative operations. The system handles member management, loan processing, savings tracking, and payment processing for a SACCO organization",
+      tech: ["React", "Bootstrap CSS", "Framer Motion"],
+      link: "https://github.com/samvode27/Patient-Page-Frontend-Project",
+    },
+    {
       title: "Hospital Admin Page",
       description:
         "Admin dashboard for hospitals to manage blood requests and donors.",
@@ -26,13 +32,7 @@ const Projects = () => {
       link: "https://github.com/samvode27/Real-estate-Frontend-Project",
 
     },
-    {
-      title: "Patient Page Frontend Project",
-      description:
-        "Patients can Search doctors, see top doctors, book appointments, read blogs, see notifications, contact doctors",
-      tech: ["React", "Bootstrap CSS", "Framer Motion"],
-      link: "https://github.com/samvode27/Patient-Page-Frontend-Project",
-    },
+    
   ];
 
   return (
