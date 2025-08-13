@@ -9,28 +9,29 @@ const Projects = () => {
       description:
         "A full-stack application for managing blood donations with authentication, dashboards, and request handling.",
       tech: ["React", "Node.js", "MongoDB", "Express"],
-      link: "https://github.com/samvode27/Blood-Donation-App",
+      link: "https://github.com/samvode27/FullstackBloodDonation"
     },
     {
       title: "Hospital Admin Page",
       description:
         "Admin dashboard for hospitals to manage blood requests and donors.",
       tech: ["React", "Bootstrap"],
-      link: "https://github.com/samvode27/Hospital-Page-Frontend-Project",
+      link: "https://github.com/samvode27/Hospital-Admin-page"
     },
     {
       title: "Real Estate Website",
       description:
         "Frontend real-estate platform to display and filter properties.",
       tech: ["React", "CSS", "Framer Motion"],
-      link: "https://github.com/samvode27",
+      link: "https://github.com/samvode27/Real-estate-Frontend-Project",
+
     },
     {
-      title: "Portfolio Website",
+      title: "Patient Page Frontend Project",
       description:
-        "Personal portfolio website showcasing projects and skills with modern UI.",
-      tech: ["React", "Tailwind CSS", "Framer Motion"],
-      link: "https://github.com/samvode27/portfolio",
+        "Patients can Search doctors, see top doctors, book appointments, read blogs, see notifications, contact doctors",
+      tech: ["React", "Bootstrap CSS", "Framer Motion"],
+      link: "https://github.com/samvode27/Patient-Page-Frontend-Project",
     },
   ];
 

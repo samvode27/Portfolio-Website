@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -11,39 +13,22 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 const SOCIALS = [
-  {
-    icon: <Twitter size={20} />,
-    url: "https://twitter.com/yourhandle",
-    label: "Twitter",
-  },
-  {
-    icon: <Linkedin size={20} />,
-    url: "https://linkedin.com/in/yourprofile",
-    label: "LinkedIn",
-  },
-  {
-    icon: <Github size={20} />,
-    url: "https://github.com/yourhandle",
-    label: "GitHub",
-  },
-  {
-    icon: <Instagram size={20} />,
-    url: "https://instagram.com/yourhandle",
-    label: "Instagram",
-  },
+  { icon: <Twitter size={20} />, url: "https://twitter.com/yourhandle", label: "Twitter" },
+  { icon: <Linkedin size={20} />, url: "https://linkedin.com/in/yourprofile", label: "LinkedIn" },
+  { icon: <Github size={20} />, url: "https://github.com/yourhandle", label: "GitHub" },
+  { icon: <Instagram size={20} />, url: "https://instagram.com/yourhandle", label: "Instagram" },
 ];
 
 export default function Contact() {
-  // Dark mode state (auto detect)
+  // Dark mode state
   const [darkMode, setDarkMode] = useState(
-    window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
+    window.matchMedia?.("(prefers-color-scheme: dark)").matches || false
   );
 
-  // Listen for system theme changes
   useEffect(() => {
     const listener = (e) => setDarkMode(e.matches);
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", listener);
@@ -51,64 +36,91 @@ export default function Contact() {
       window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", listener);
   }, []);
 
-  // Form state & validation
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  // Form state
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Validation rules
+  // Validation
   const validate = (fieldValues = formData) => {
     let temp = { ...errors };
-    if ("name" in fieldValues)
-      temp.name = fieldValues.name ? "" : "Name is required.";
-    if ("email" in fieldValues) {
+    if ("name" in fieldValues) temp.name = fieldValues.name ? "" : "Name is required.";
+    if ("email" in fieldValues)
       temp.email = fieldValues.email
         ? /\S+@\S+\.\S+/.test(fieldValues.email)
           ? ""
           : "Email is not valid."
         : "Email is required.";
-    }
-    if ("subject" in fieldValues)
-      temp.subject = fieldValues.subject ? "" : "Subject is required.";
-    if ("message" in fieldValues)
-      temp.message = fieldValues.message ? "" : "Message is required.";
-
+    if ("subject" in fieldValues) temp.subject = fieldValues.subject ? "" : "Subject is required.";
+    if ("message" in fieldValues) temp.message = fieldValues.message ? "" : "Message is required.";
     setErrors({ ...temp });
-    // Return true if all errors are empty strings
     return Object.values(temp).every((x) => x === "");
   };
 
-  // Handle input changes and validate on the fly
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     validate({ [name]: value });
   };
 
-  // Submit handler with fake async & feedback
+  // Submit handler with EmailJS + toast
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      setLoading(true);
-      setStatus(null);
-      try {
-        await new Promise((res) => setTimeout(res, 1500));
-        setStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setErrors({});
-      } catch {
-        setStatus("error");
-      } finally {
-        setLoading(false);
-      }
-    } else {
-      setStatus("error");
+    if (!validate()) {
+      toast.error("Please fix the errors in the form before sending.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: darkMode ? "dark" : "light",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await emailjs.send(
+        "YOUR_SERVICE_ID", // replace with your EmailJS service ID
+        "YOUR_TEMPLATE_ID", // replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          location: "Addis Ababa, Ethiopia",
+          to_email: "setarigesamuel@gmail.com",
+        },
+        "YOUR_PUBLIC_KEY" // replace with your EmailJS public key
+      );
+
+      toast.success("Message sent successfully! I'll get back to you soon.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: darkMode ? "dark" : "light",
+      });
+
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setErrors({});
+    } catch (err) {
+      console.error(err);
+      toast.error("Oops! Something went wrong. Please try again.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: darkMode ? "dark" : "light",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -191,27 +203,6 @@ export default function Contact() {
             <button type="submit" disabled={loading}>
               {loading ? "Sending..." : "Send Message"}
             </button>
-
-            {status === "success" && (
-              <motion.p
-                className="form-feedback success"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                role="alert"
-              >
-                Message sent successfully! I'll get back to you soon.
-              </motion.p>
-            )}
-            {status === "error" && (
-              <motion.p
-                className="form-feedback error"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                role="alert"
-              >
-                Please fix the errors above and try again.
-              </motion.p>
-            )}
           </motion.form>
 
           {/* Contact Info + Map */}
@@ -230,7 +221,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <a href="tel:+251912345678" className="info-card" aria-label="Phone number">
+              <a href="tel:+251944867635" className="info-card" aria-label="Phone number">
                 <Phone size={24} className="info-icon" />
                 <div>
                   <h4>Phone</h4>
@@ -238,7 +229,7 @@ export default function Contact() {
                 </div>
               </a>
 
-              <a href="mailto:youremail@example.com" className="info-card" aria-label="Email address">
+              <a href="mailto:setarigesamuel@gmail.com" className="info-card" aria-label="Email address">
                 <Mail size={24} className="info-icon" />
                 <div>
                   <h4>Email</h4>
@@ -268,11 +259,11 @@ export default function Contact() {
             <div className="map-container" aria-label="Google map showing location">
               <iframe
                 title="Location map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.9425115924835!2d38.75970961510934!3d9.023831792750848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8544f4b1b8ef%3A0xf2b4c7ae78a44a3d!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1689000000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.844457870966!2d38.7472923!3d8.9316496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b833445a562d3%3A0x3fe0af5961f648ab!2sSaris%20Hanamariam!5e0!3m2!1sen!2set!4v1691916000000!5m2!1sen!2set"
                 width="100%"
                 height="220"
                 style={{ border: 0, borderRadius: "12px" }}
-                allowFullScreen=""
+                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
@@ -280,6 +271,9 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </section>
   );
 }

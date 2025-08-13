@@ -2,7 +2,7 @@
 :root {
   --bg: #ffffff;
   --bg-dark: #121212;
-  --primary: #6200ea;
+  --primary: #00f5a0;
   --primary-dark: #3700b3;
   --text: #222222;
   --border: #ddd;
@@ -21,8 +21,7 @@ body.dark {
   position: sticky;
   top: 0;
   width: 100%;
-  background: var(--bg);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
   z-index: 9999;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
