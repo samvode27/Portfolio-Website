@@ -13,7 +13,7 @@ const Projects = () => {
     },
     {
       title: "Fullstack Sacco System",
-      description: "Werqama SACCO (Savings and Credit Cooperative Organization) system, a full-stack web application designed to manage financial cooperative operations. The system handles member management, loan processing, savings tracking, and payment processing for a SACCO organization",
+      description: "Werqama SACCO (Savings and Credit Cooperative Organization) system, a full-stack web application.",
       tech: ["React", "Bootstrap CSS", "Framer Motion"],
       link: "https://github.com/samvode27/Patient-Page-Frontend-Project",
     },
