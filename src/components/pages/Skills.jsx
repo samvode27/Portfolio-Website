@@ -15,6 +15,7 @@ import {
   SiGithub,
   SiVercel,
   SiPostman,
+  SiPhp            
 } from "react-icons/si";
 
 import "./Skills.css";
@@ -32,6 +33,7 @@ const skills = [
   { name: "Typescript", level: 80 },
   { name: "Postman", level: 89 },
   { name: "Vercle", level: 85 },
+  { name: "PHP", level: 82 } 
 ];
 
 const skillLogos = [
@@ -49,6 +51,7 @@ const skillLogos = [
   <SiGithub color="#000000" size={100} key="express" />,
   <SiVercel color="#7952B3" size={100} key="bootstrap" />,
   <SiPostman color="#47A248" size={100} key="mongodb" />,
+  <SiPhp color="#7377ad" size={100} key="php" />   
 ];
 
 const barVariants = {
