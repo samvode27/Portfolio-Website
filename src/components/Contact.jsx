@@ -6,19 +6,17 @@ import {
   Mail,
   Phone,
   MapPin,
-  Twitter,
-  Linkedin,
   Github,
   Instagram,
   Sun,
   Moon,
 } from "lucide-react";
+import { FaTelegramPlane } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 const SOCIALS = [
-  { icon: <Twitter size={20} />, url: "https://twitter.com/yourhandle", label: "Twitter" },
-  { icon: <Telegram size={20} />, url: "https://t.me/samvode27", label: "LinkedIn" },
+  { icon: <FaTelegramPlane size={20} />, url: "https://t.me/samvode27", label: "Telegram" },
   { icon: <Github size={20} />, url: "https://github.com/samvode27/", label: "GitHub" },
   { icon: <Instagram size={20} />, url: "https://www.instagram.com/samvode_27?igsh=dzlwa3JlaGd5eXB1", label: "Instagram" },
 ];
