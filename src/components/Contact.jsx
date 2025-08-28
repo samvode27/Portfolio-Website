@@ -18,9 +18,9 @@ import "./Contact.css";
 
 const SOCIALS = [
   { icon: <Twitter size={20} />, url: "https://twitter.com/yourhandle", label: "Twitter" },
-  { icon: <Linkedin size={20} />, url: "https://linkedin.com/in/yourprofile", label: "LinkedIn" },
-  { icon: <Github size={20} />, url: "https://github.com/yourhandle", label: "GitHub" },
-  { icon: <Instagram size={20} />, url: "https://instagram.com/yourhandle", label: "Instagram" },
+  { icon: <Telegram size={20} />, url: "https://t.me/samvode27", label: "LinkedIn" },
+  { icon: <Github size={20} />, url: "https://github.com/samvode27/", label: "GitHub" },
+  { icon: <Instagram size={20} />, url: "https://www.instagram.com/samvode_27?igsh=dzlwa3JlaGd5eXB1", label: "Instagram" },
 ];
 
 export default function Contact() {

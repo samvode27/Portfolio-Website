@@ -12,10 +12,10 @@ const Projects = () => {
       link: "https://github.com/samvode27/FullstackBloodDonation"
     },
     {
-      title: "Fullstack Sacco System",
+      title: "Fullstack Microfinance System",
       description: "Werqama SACCO (Savings and Credit Cooperative Organization) system, a full-stack web application.",
       tech: ["React", "Bootstrap CSS", "Framer Motion"],
-      link: "https://github.com/samvode27/Patient-Page-Frontend-Project",
+      link: "https://github.com/samvode27/Full-stack-Werqama-Sacco-System",
     },
     {
       title: "Hospital Admin Page",
