@@ -8,13 +8,13 @@ const Projects = () => {
       title: "Blood Donation App",
       description:
         "A full-stack application for managing blood donations with authentication, dashboards, and request handling.",
-      tech: ["React", "Node.js", "MongoDB", "Express"],
+      tech: ["React", "Node.js", "MongoDB", "Express", "Talwind Css"],
       link: "https://github.com/samvode27/FullstackBloodDonation"
     },
     {
       title: "Fullstack Microfinance System",
       description: "Werqama SACCO (Savings and Credit Cooperative Organization) system, a full-stack web application.",
-      tech: ["React", "Bootstrap CSS", "Framer Motion"],
+      tech: ["React", "Node.js", "MongoDB", "Express", "Bootstrap"],
       link: "https://github.com/samvode27/Full-stack-Werqama-Sacco-System",
     },
     {
@@ -30,7 +30,6 @@ const Projects = () => {
         "Frontend real-estate platform to display and filter properties.",
       tech: ["React", "CSS", "Framer Motion"],
       link: "https://github.com/samvode27/Real-estate-Frontend-Project",
-
     },
     
   ];

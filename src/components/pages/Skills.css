@@ -33,7 +33,7 @@
 .skill-item {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 1.8rem 1.5rem;
+  padding: 1.3rem 1rem;
   backdrop-filter: blur(8px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   border: 1px solid transparent;
