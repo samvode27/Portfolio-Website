@@ -117,6 +117,7 @@ function ProjectCard({ project }) {
   const [zoomLevel, setZoomLevel] = useState(1);
 
   useEffect(() => {
+    if (project.images.length === 0) return;
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) =>
         prev === project.images.length - 1 ? 0 : prev + 1,
@@ -126,7 +127,7 @@ function ProjectCard({ project }) {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [project.images.length]);
+  }, [project.images]);
 
   const zoomIn = () => {
     setZoomLevel((prev) => Math.min(prev + 0.5, 3));
@@ -142,6 +143,9 @@ function ProjectCard({ project }) {
         <img
           src={project.images[currentImageIndex]}
           alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+          onError={(e) => {
+            e.target.src = "/placeholder-project.png";
+          }}
           style={{
             transform: `scale(${zoomLevel})`,
             transformOrigin: "center center",
