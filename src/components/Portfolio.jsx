@@ -32,8 +32,7 @@ const projects = [
     github:
       "https://github.com/samvode27/Blood-Donation-and-Bank-Management-System",
 
-    liveFrontend:
-      "https://blood-donation-and-bank-management.vercel.app/",
+    liveFrontend: "https://blood-donation-and-bank-management.vercel.app/",
 
     liveBackend:
       "https://blood-donation-and-bank-management-system.onrender.com/",
@@ -66,57 +65,51 @@ const projects = [
     description:
       "WERQAMA SACCO is a full-stack savings and loan management system designed to streamline SACCO operations. Members can register, manage their profiles, track savings and transactions, and apply for loans. The system includes secure JWT authentication, loan application and approval workflows, administrative dashboard analytics, and structured MongoDB data management. It also provides a responsive and user-friendly interface for both desktop and mobile users.",
 
-    github:
-      "https://github.com/samvode27/Werqama-Sacco-System",
+    github: "https://github.com/samvode27/Werqama-Sacco-System",
 
-    liveFrontend:
-      "https://werqama-sacco-frontend.vercel.app/",
+    liveFrontend: "https://werqama-sacco-frontend.vercel.app/",
 
-    liveBackend:
-      "https://werqama-sacco-backend-3meu.onrender.com/",
+    liveBackend: "https://werqama-sacco-backend-3meu.onrender.com/",
   },
 
   {
     title: "Training Management System",
     category: "Web Development",
 
-    thumbnail: "/sacco/login-page.png",
+    thumbnail: "/tms/login-page.png",
 
     images: [
-      "/sacco/login-page.png",
-      "/sacco/admin-dashboard.png",
-      "/sacco/enrollment-record.png",
-      "/sacco/Grade.png",
+      "/tms/login-page.png",
+      "/tms/admin-dashboard.png",
+      "/tms/enrollment-record.png",
+      "/tms/Grade.png",
     ],
 
     techStack: [
-      "Typescript",
+      "TypeScript",
       "Angular",
+      "Angular Material",
       "C#",
       "ASP.NET Core",
+      "PostgreSQL",
+      "Entity Framework Core",
+      "SignalR",
       "Docker",
       "Render",
-      "HTML",
-      "CSS",
     ],
 
     description:
       "Training Management System (TMS) is a full-stack learning and training management platform designed to streamline the management of users, courses, enrollments, assessments, grades, certificates, learning goals, and student transcripts. The system provides secure JWT authentication and role-based access for administrators, instructors, and students, with dedicated dashboards and workflows for each role. It uses Angular and Angular Material for a responsive user interface, ASP.NET Core and Clean Architecture for the backend, PostgreSQL with Entity Framework Core for data management, and SignalR for real-time communication.",
-    github:
-      "https://github.com/samvode27/Training-Management-System",
 
-    liveURL:
-      "https://training-management-system-ui.onrender.com/",
+    github: "https://github.com/samvode27/Training-Management-System",
 
+    liveFrontend: "https://training-management-system-ui.onrender.com/",
+
+    liveBackend: "https://training-management-system-qfiz.onrender.com/",
   },
 ];
 
-const projectFilters = [
-  "All",
-  "Web Design",
-  "Applications",
-  "Web Development",
-];
+const projectFilters = ["All", "Web Design", "Applications", "Web Development"];
 
 function ProjectCard({ project }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -124,16 +117,16 @@ function ProjectCard({ project }) {
   const [zoomLevel, setZoomLevel] = useState(1);
 
   useEffect(() => {
-  const interval = setInterval(() => {
-    setCurrentImageIndex((prev) =>
-      prev === project.images.length - 1 ? 0 : prev + 1
-    );
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) =>
+        prev === project.images.length - 1 ? 0 : prev + 1,
+      );
 
-    setZoomLevel(1);
-  }, 3000);
+      setZoomLevel(1);
+    }, 3000);
 
-  return () => clearInterval(interval);
-}, [project.images.length]);
+    return () => clearInterval(interval);
+  }, [project.images.length]);
 
   const zoomIn = () => {
     setZoomLevel((prev) => Math.min(prev + 0.5, 3));
@@ -145,7 +138,6 @@ function ProjectCard({ project }) {
 
   return (
     <div className="project-item active">
-
       <div className="project-img">
         <img
           src={project.images[currentImageIndex]}
@@ -200,7 +192,6 @@ function ProjectCard({ project }) {
 
         {/* Project Links on Image */}
         <div className="project-hover-links">
-
           <a
             href={project.github}
             className="project-link-icon"
@@ -230,38 +221,25 @@ function ProjectCard({ project }) {
           >
             <ion-icon name="server-outline"></ion-icon>
           </a>
-
         </div>
       </div>
 
       {/* Project Header */}
       <div className="project-header">
-
         <div>
-          <h3 className="project-title">
-            {project.title}
-          </h3>
+          <h3 className="project-title">{project.title}</h3>
 
-          <p className="project-category">
-            {project.category}
-          </p>
+          <p className="project-category">{project.category}</p>
         </div>
       </div>
 
       {/* Project Description */}
-      <p
-        className={`project-description ${
-          expanded ? "expanded" : ""
-        }`}
-      >
+      <p className={`project-description ${expanded ? "expanded" : ""}`}>
         {project.description}
       </p>
 
       {project.description.length > 100 && (
-        <button
-          className="see-more-btn"
-          onClick={() => setExpanded(!expanded)}
-        >
+        <button className="see-more-btn" onClick={() => setExpanded(!expanded)}>
           {expanded ? "See less" : "See more"}
         </button>
       )}
@@ -274,7 +252,6 @@ function ProjectCard({ project }) {
           </span>
         ))}
       </div>
-
     </div>
   );
 }
@@ -285,33 +262,21 @@ export default function Portfolio() {
   const filteredProjects =
     activeFilter === "All"
       ? projects
-      : projects.filter(
-          (project) => project.category === activeFilter
-        );
+      : projects.filter((project) => project.category === activeFilter);
 
   return (
     <article className="portfolio" data-page="portfolio">
-
       <header>
-        <h2 className="h2 article-title">
-          Projects
-        </h2>
+        <h2 className="h2 article-title">Projects</h2>
       </header>
 
       <section className="projects">
-
         {/* Mobile Filter */}
         <div className="filter-select-box">
-          <button
-            className="filter-select"
-            onClick={() => {}}
-          >
+          <button className="filter-select" onClick={() => {}}>
             <span>{activeFilter}</span>
 
-            <ion-icon
-              name="chevron-down"
-              className="select-icon"
-            ></ion-icon>
+            <ion-icon name="chevron-down" className="select-icon"></ion-icon>
           </button>
         </div>
 
@@ -323,7 +288,6 @@ export default function Portfolio() {
             </li>
           ))}
         </ul>
-
       </section>
     </article>
   );
