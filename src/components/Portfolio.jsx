@@ -75,6 +75,40 @@ const projects = [
     liveBackend:
       "https://werqama-sacco-backend-3meu.onrender.com/",
   },
+
+  {
+    title: "Training Management System",
+    category: "Web Development",
+
+    thumbnail: "/sacco/login-page.png",
+
+    images: [
+      "/sacco/login-page.png",
+      "/sacco/admin-dashboard.png",
+      "/sacco/enrollment-record.png",
+      "/sacco/Grade.png",
+    ],
+
+    techStack: [
+      "Typescript",
+      "Angular",
+      "C#",
+      "ASP.NET Core",
+      "Docker",
+      "Render",
+      "HTML",
+      "CSS",
+    ],
+
+    description:
+      "Training Management System (TMS) is a full-stack learning and training management platform designed to streamline the management of users, courses, enrollments, assessments, grades, certificates, learning goals, and student transcripts. The system provides secure JWT authentication and role-based access for administrators, instructors, and students, with dedicated dashboards and workflows for each role. It uses Angular and Angular Material for a responsive user interface, ASP.NET Core and Clean Architecture for the backend, PostgreSQL with Entity Framework Core for data management, and SignalR for real-time communication.",
+    github:
+      "https://github.com/samvode27/Training-Management-System",
+
+    liveURL:
+      "https://training-management-system-ui.onrender.com/",
+
+  },
 ];
 
 const projectFilters = [
